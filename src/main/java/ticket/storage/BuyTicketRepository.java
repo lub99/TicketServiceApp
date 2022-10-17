@@ -4,7 +4,7 @@ import errorLog.dataclasses.Error;
 import errorLog.ErrorSource;
 import errorLog.MyErrorListener;
 import notification.BuyTicketEventListener;
-import notification.NotificationSource;
+import notification.BuyTicketNotificationSource;
 import ticket.dataclass.GameTicket;
 import ticket.dataclass.User;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class BuyTicketRepository implements ErrorSource, NotificationSource {
+public class BuyTicketRepository implements ErrorSource, BuyTicketNotificationSource {
     List<MyErrorListener> errorListeners = new ArrayList<>();
     List<BuyTicketEventListener> buyTicketEventListeners = new ArrayList<>();
 
