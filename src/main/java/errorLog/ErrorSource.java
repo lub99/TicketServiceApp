@@ -6,5 +6,5 @@ public interface ErrorSource {
     void addOnErrorListener(MyErrorListener listener);
     void removeErrorListener(MyErrorListener listener);
 
-    void notifyListeners(Error error);
+    void notifyErrorListeners(Error error);
 }

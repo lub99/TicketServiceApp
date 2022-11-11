@@ -6,5 +6,5 @@ import ticket.dataclass.User;
 public interface BuyTicketNotificationSource {
     void addNotificationListener(BuyTicketEventListener buyTicketEventListener);
     void removeNotificationListener(BuyTicketEventListener buyTicketEventListener);
-    void startNotification(User user, GameTicket gameTicket);
+    void notifyNotificationListeners(User user, GameTicket gameTicket);
 }

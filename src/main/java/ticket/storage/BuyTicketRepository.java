@@ -21,10 +21,10 @@ public class BuyTicketRepository implements ErrorSource, BuyTicketNotificationSo
         int rand = new Random().nextInt(10) + 1;
         if (rand <= 5) {
             System.out.println("Successful buy of ticket");
-            startNotification(user, ticket);
+            notifyNotificationListeners(user, ticket);
         } else {
             System.out.println("Error when buying game ticket");
-            notifyListeners(new Error("Error when buying game ticket", 1));
+            notifyErrorListeners(new Error("Error when buying game ticket", 1));
         }
 
     }
@@ -40,7 +40,7 @@ public class BuyTicketRepository implements ErrorSource, BuyTicketNotificationSo
     }
 
     @Override
-    public void startNotification(User user, GameTicket gameTicket) {
+    public void notifyNotificationListeners(User user, GameTicket gameTicket) {
         buyTicketEventListeners.forEach(buyTicketEventListener -> buyTicketEventListener.onBuyTicketEvent(user, gameTicket));
     }
 
@@ -55,7 +55,7 @@ public class BuyTicketRepository implements ErrorSource, BuyTicketNotificationSo
     }
 
     @Override
-    public void notifyListeners(Error error) {
+    public void notifyErrorListeners(Error error) {
         errorListeners.forEach(myErrorListener -> myErrorListener.onError(error));
     }
 }

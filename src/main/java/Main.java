@@ -1,5 +1,5 @@
 import errorLog.errorService.ConsolePrintErrorService;
-import notification.service.EmailNotificationService;
+import notification.service.impl.EmailNotificationService;
 import ticket.dataclass.GameTicket;
 import ticket.dataclass.StadiumPosition;
 import ticket.dataclass.User;

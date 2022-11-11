@@ -1,5 +1,7 @@
-package notification.service;
+package notification.service.impl;
 
+import notification.BuyTicketNotificationSource;
+import notification.service.BuyTicketNotificationService;
 import ticket.dataclass.GameTicket;
 import ticket.dataclass.User;
 import ticket.storage.BuyTicketRepository;
@@ -8,14 +10,14 @@ public class EmailNotificationService implements BuyTicketNotificationService {
     /**
      * Here goes email sending configuration fields
      * */
+    private BuyTicketNotificationSource buyTicketNotificationSource;
 
-    private BuyTicketRepository buyTicketRepository;
+    public EmailNotificationService(BuyTicketNotificationSource buyTicketNotificationSource) {
+        this.buyTicketNotificationSource = buyTicketNotificationSource;
 
-    public EmailNotificationService(BuyTicketRepository buyTicketRepository) {
-        this.buyTicketRepository = buyTicketRepository;
-
-        buyTicketRepository.addNotificationListener(this::notifyUser);
+        buyTicketNotificationSource.addNotificationListener(this::notifyUser);
     }
+
 
     @Override
     public void notifyUser(User user, GameTicket ticket) {
